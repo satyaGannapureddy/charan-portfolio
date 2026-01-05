@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Cloud background like the reference */
+.hero-clouds {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #2fc3ff 0%, #77d9ff 45%, #b7f0ff 100%);
+}
+
+/* Big soft cloud layers using radial gradients */
+.hero-clouds::before,
+.hero-clouds::after {
+  content: "";
+  position: absolute;
+  inset: -30% -20%;
+  background-repeat: repeat-x;
+  background-size: 720px 320px;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+.hero-clouds::before {
+  background-image:
+    radial-gradient(circle at 70px 230px, rgba(255,255,255,0.95) 0 90px, transparent 92px),
+    radial-gradient(circle at 170px 240px, rgba(255,255,255,0.95) 0 110px, transparent 112px),
+    radial-gradient(circle at 310px 250px, rgba(255,255,255,0.95) 0 130px, transparent 132px),
+    radial-gradient(circle at 480px 245px, rgba(255,255,255,0.95) 0 120px, transparent 122px),
+    radial-gradient(circle at 620px 255px, rgba(255,255,255,0.95) 0 150px, transparent 152px);
+  animation: cloudsMove 38s linear infinite;
+  transform: translateY(80px);
+}
+
+.hero-clouds::after {
+  opacity: 0.65;
+  background-image:
+    radial-gradient(circle at 60px 200px, rgba(255,255,255,0.85) 0 80px, transparent 82px),
+    radial-gradient(circle at 180px 220px, rgba(255,255,255,0.85) 0 100px, transparent 102px),
+    radial-gradient(circle at 330px 225px, rgba(255,255,255,0.85) 0 120px, transparent 122px),
+    radial-gradient(circle at 510px 215px, rgba(255,255,255,0.85) 0 110px, transparent 112px),
+    radial-gradient(circle at 650px 235px, rgba(255,255,255,0.85) 0 140px, transparent 142px);
+  animation: cloudsMove 55s linear infinite reverse;
+  transform: translateY(160px);
+}
+
+@keyframes cloudsMove {
+  from { background-position-x: 0px; }
+  to   { background-position-x: 1200px; }
+}
+
+/* Floating animation for illustration */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.floaty {
+  animation: floaty 4.2s ease-in-out infinite;
+}
+
+/* Fancy focus outline */
+:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
